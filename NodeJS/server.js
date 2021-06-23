@@ -12,8 +12,8 @@ app.post('/', (req, res)=>{
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: 'bismainlearn@gmail.com',
-            pass: 'le@rnEv3ryTh1ng!'
+            user: 'username@gmail.com',
+            pass: 'password'
         }
     })
 
@@ -24,14 +24,10 @@ app.post('/', (req, res)=>{
         text: req.body.comments
     }
     transporter.sendMail(mailOptions, (error, info)=>{
-        if(error){
-            console.log(error);
+        if(error)
             res.send('error');
-        }
-        else{
-            console.log('Email sent: ' + info.response);
+        else
             res.send('success')
-        }
     })
 })
 
